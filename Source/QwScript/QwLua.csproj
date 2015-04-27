@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD730C70-66A0-4F69-8395-1E0175251EFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QwLua</RootNamespace>
+    <AssemblyName>QwLua</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\out\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\out\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\ScriptClassAttribute.cs" />
+    <Compile Include="Attributes\ScriptIgnoreAttribute.cs" />
+    <Compile Include="Core\EventManager.cs" />
+    <Compile Include="Data\CharPtr.cs" />
+    <Compile Include="Data\FunctionResult.cs" />
+    <Compile Include="Data\HookInfo.cs" />
+    <Compile Include="Data\IFunctionResult.cs" />
+    <Compile Include="Data\IScriptFunction.cs" />
+    <Compile Include="Data\ITable.cs" />
+    <Compile Include="Data\ScriptDataBase.cs" />
+    <Compile Include="Data\ScriptDelegates.cs" />
+    <Compile Include="Data\ScriptFunction.cs" />
+    <Compile Include="Data\ScriptState.cs" />
+    <Compile Include="Data\Table.cs" />
+    <Compile Include="Data\ScriptTypes.cs" />
+    <Compile Include="Disposer.cs" />
+    <Compile Include="Event\ErrorEventArgs.cs" />
+    <Compile Include="Event\EventMasks.cs" />
+    <Compile Include="Event\HookEventArgs.cs" />
+    <Compile Include="Event\HookTypes.cs" />
+    <Compile Include="Exceptions\LuaException.cs" />
+    <Compile Include="Exceptions\LuaSourcetException.cs" />
+    <Compile Include="GCOptions.cs" />
+    <Compile Include="Handler\ArrayHandler.cs" />
+    <Compile Include="Handler\BaseHandler.cs" />
+    <Compile Include="Handler\FieldHandler.cs" />
+    <Compile Include="Handler\HandlerCenter.cs" />
+    <Compile Include="Handler\IHandler.cs" />
+    <Compile Include="Handler\INewIndexer.cs" />
+    <Compile Include="Handler\MethodHandler.cs" />
+    <Compile Include="Handler\ObjectHandler.cs" />
+    <Compile Include="Handler\PropertyHandler.cs" />
+    <Compile Include="Handler\TypeHandler.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\ScriptApi.cs" />
+    <Compile Include="Helpers\ScriptHelper.cs" />
+    <Compile Include="IActuator.cs" />
+    <Compile Include="IHookManager.cs" />
+    <Compile Include="ILuaRegister.cs" />
+    <Compile Include="ILuaRuntime.cs" />
+    <Compile Include="Implements\ClassManager.cs" />
+    <Compile Include="Implements\FunctionManager.cs" />
+    <Compile Include="Implements\HookManager.cs" />
+    <Compile Include="Implements\HookManagerPool.cs" />
+    <Compile Include="Implements\LuaCore.cs" />
+    <Compile Include="Implements\LuaRuntime.cs" />
+    <Compile Include="Implements\LuaRuntimePool.cs" />
+    <Compile Include="Implements\ObjectManager.cs" />
+    <Compile Include="Implements\RuntimeActuator.cs" />
+    <Compile Include="Locker.cs" />
+    <Compile Include="Reflection\AssemblyResolver.cs" />
+    <Compile Include="Reflection\IConstructor.cs" />
+    <Compile Include="Reflection\IField.cs" />
+    <Compile Include="Reflection\IMember.cs" />
+    <Compile Include="Reflection\IMethod.cs" />
+    <Compile Include="Reflection\Implements\ConstructorImplement.cs" />
+    <Compile Include="Reflection\Implements\FieldImplement.cs" />
+    <Compile Include="Reflection\Implements\MemberImplement.cs" />
+    <Compile Include="Reflection\Implements\MethodImplement.cs" />
+    <Compile Include="Reflection\Implements\PropertyImplement.cs" />
+    <Compile Include="Reflection\IProperty.cs" />
+    <Compile Include="Reflection\MethodExtensions.cs" />
+    <Compile Include="Reflection\ReflectionHelper.cs" />
+    <Compile Include="Reflection\TypeExtensions.cs" />
+    <Compile Include="RuntimeDisposer.cs" />
+    <Compile Include="LuaFactory.cs" />
+    <Compile Include="LuaGC.cs" />
+    <Compile Include="Metatable\BaseMetatable.cs" />
+    <Compile Include="Metatable\DotNetObjectsMetatable.cs" />
+    <Compile Include="Metatable\EnumMetatable.cs" />
+    <Compile Include="Metatable\FunctionMetatable.cs" />
+    <Compile Include="Metatable\MetatableInitilazer.cs" />
+    <Compile Include="Metatable\ObjectMetatable.cs" />
+    <Compile Include="Metatable\UserDataMetatable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BaseActuator.cs" />
+    <Compile Include="Utils\BaseArgument.cs" />
+    <Compile Include="Wrapper\DelegateWrapper.cs" />
+    <Compile Include="Wrapper\MethodFinder.cs" />
+    <Compile Include="Wrapper\MethodWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QwMicroKernel\QwMicroKernel.csproj">
+      <Project>{74a1a6c2-7d26-421e-b038-7262fefba609}</Project>
+      <Name>QwMicroKernel</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

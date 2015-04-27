@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="DotNet">
+      <UniqueIdentifier>{a46f14ce-f584-4670-be45-a58011692527}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="luaSrc/lctype.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/ldebug.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/ldo.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lfunc.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lgc.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/llex.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/llimits.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lmem.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lobject.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lopcodes.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lparser.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lstate.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lstring.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/ltable.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/ltm.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lua.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lua.hpp">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/luaconf.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lualib.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lundump.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lvm.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lzio.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lapi.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lauxlib.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="luaSrc/lcode.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="ldotNet.h">
+      <Filter>DotNet</Filter>
+    </ClInclude>
+    <ClInclude Include="lbase64.h">
+      <Filter>DotNet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="luaSrc/lbaselib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lbitlib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lcode.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lcorolib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lctype.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ldblib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ldebug.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ldo.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ldump.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lfunc.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lgc.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/linit.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/liolib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/llex.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lmathlib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lmem.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/loadlib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lobject.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lopcodes.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/loslib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lparser.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lstate.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lstring.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lstrlib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ltable.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ltablib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/ltm.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lundump.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lvm.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lzio.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lapi.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="luaSrc/lauxlib.c">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ldotNet.cpp">
+      <Filter>DotNet</Filter>
+    </ClCompile>
+    <ClCompile Include="lbase64.c">
+      <Filter>DotNet</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

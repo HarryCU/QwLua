@@ -1,15 +1,28 @@
-﻿using System.Reflection;
+﻿/**
+ * Copyright (c) 2015, Harry CU 邱允根 (292350862@qq.com).
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-// 有关程序集的常规信息通过以下
-// 特性集控制。更改这些特性值可修改
-// 与程序集关联的信息。
 [assembly: AssemblyTitle("QwScript")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("对lua库的封装的.Net版本!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("QwScript")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,8 +41,5 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-// 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
-// 方法是按如下所示使用“*”: 
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.9.9.2015")]
+[assembly: AssemblyFileVersion("1.9.9.2015")]

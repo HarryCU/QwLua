@@ -30,6 +30,7 @@ namespace QwLua
         bool Disposed { get; }
         IHookManager HookMgr { get; }
 
+        void LoadScript(string script);
         IList<object> RunScript(string script);
 
         IActuator RunScriptAsync(string script);

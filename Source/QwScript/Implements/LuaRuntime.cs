@@ -149,6 +149,11 @@ namespace QwLua.Implements
 
         #region Impl
 
+        public void LoadScript(string script)
+        {
+            LuaCore.RunScript(State, script);
+        }
+
         public IList<object> RunScript(string script)
         {
             if (Disposed)

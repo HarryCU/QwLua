@@ -18,12 +18,12 @@ using System.Runtime.InteropServices;
 
 namespace QwLua.Data
 {
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void DotNetHookHandler(ScriptState l, HookInfo ar);
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate int ScriptFunctionHandler(ScriptState luaState);
 
-    [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
     public delegate void DotNetFunctionHandler(ScriptState luaState);
 }

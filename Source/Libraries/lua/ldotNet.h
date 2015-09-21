@@ -23,6 +23,7 @@
 #define ldotnet_h
 
 #include "luaSrc\lua.hpp"
+#include "windows.h"
 extern "C" {
 #include "lbase64.h"
 }
@@ -68,7 +69,7 @@ struct ldotNet_Debug {
 	unsigned char nparams;/* (u) number of parameters */
 	char isvararg;        /* (u) */
 	char istailcall;	/* (t) */
-	char *short_src; /* (S) */
+	const char *short_src; /* (S) */
 	lua_State *L;
 	lua_Debug *ar;
 };

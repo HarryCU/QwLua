@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
+using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using QwLua.Helpers;
 using QwLua.Implements;
 
@@ -26,21 +28,17 @@ namespace QwLua.Data
         /// int
         public int eventCode;
 
-        /// char*
-        [MarshalAs(UnmanagedType.LPStr)]
-        public string name;
+        ///// char*
+        //public IntPtr name;
 
-        /// char*
-        [MarshalAs(UnmanagedType.LPStr)]
-        public string namewhat;
+        ///// char*
+        //public IntPtr namewhat;
 
-        /// char*
-        [MarshalAs(UnmanagedType.LPStr)]
-        public string what;
+        ///// char*
+        //public IntPtr what;
 
-        /// char*
-        [MarshalAs(UnmanagedType.LPStr)]
-        public string source;
+        ///// char*
+        //public IntPtr source;
 
         /// int
         public int currentline;
@@ -63,8 +61,8 @@ namespace QwLua.Data
         /// char
         public byte istailcall;
 
-        /// char[60]
-        public string short_src;
+        ///// char[60]
+        //public IntPtr short_src;
 
         public ScriptState L;
 

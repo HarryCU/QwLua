@@ -21,37 +21,37 @@
 #include "ldotNet.h"
 
 static const luaL_Reg loadedLibs[] = {
-  {"_G", luaopen_base},
+	{ "_G", luaopen_base },
 #if INCLUDE_PACKAGE
-  {LUA_LOADLIBNAME, luaopen_package},
+	{LUA_LOADLIBNAME, luaopen_package},
 #endif
-  {LUA_COLIBNAME, luaopen_coroutine},
-  {LUA_TABLIBNAME, luaopen_table},
+	{ LUA_COLIBNAME, luaopen_coroutine },
+	{ LUA_TABLIBNAME, luaopen_table },
 #if INCLUDE_IO
-  {LUA_IOLIBNAME, luaopen_io},
+	{LUA_IOLIBNAME, luaopen_io},
 #endif
 #if INCLUDE_OS
-  {LUA_OSLIBNAME, luaopen_os},
+	{LUA_OSLIBNAME, luaopen_os},
 #endif
-  {LUA_STRLIBNAME, luaopen_string},
-  {LUA_BITLIBNAME, luaopen_bit32},
-  {LUA_MATHLIBNAME, luaopen_math},
-  {LUA_DBLIBNAME, luaopen_debug},
-  {LUA_BASE64, luaopen_base64},
-  {NULL, NULL}
+	{ LUA_STRLIBNAME, luaopen_string },
+	{ LUA_BITLIBNAME, luaopen_bit32 },
+	{ LUA_MATHLIBNAME, luaopen_math },
+	{ LUA_DBLIBNAME, luaopen_debug },
+	{ LUA_BASE64, luaopen_base64 },
+	{ NULL, NULL }
 };
 
-LUALIB_API void ldotNet_openlibs (lua_State *L) {
-  const luaL_Reg *lib;
-  /* call open functions from 'loadedlibs' and set results to global table */
-  for (lib = loadedLibs; lib->func; lib++) {
-    luaL_requiref(L, lib->name, lib->func, 1);
-    lua_pop(L, 1);  /* remove lib */
-  }
+LUALIB_API void ldotNet_openlibs(lua_State *L) {
+	const luaL_Reg *lib;
+	/* call open functions from 'loadedlibs' and set results to global table */
+	for (lib = loadedLibs; lib->func; lib++) {
+		luaL_requiref(L, lib->name, lib->func, 1);
+		lua_pop(L, 1);  /* remove lib */
+	}
 }
 
 LDOTNET_API void ldotNet_setDotNetHook(dotNet_hook hook) {
-	if(hook != NULL) {
+	if (hook != NULL) {
 		g_dotNetHook = hook;
 	}
 }
@@ -70,17 +70,17 @@ LDOTNET_API void ldotNet_closeEngine(lua_State *L) {
 	lua_close(L);
 }
 
-LDOTNET_STATIC int ldotNet_closure (lua_State *L) 
+LDOTNET_STATIC int ldotNet_closure(lua_State *L)
 {
-	ldotNet_invokeMethod call = (ldotNet_invokeMethod)lua_touserdata (L, lua_upvalueindex (1));
-	if(call == NULL)
+	ldotNet_invokeMethod call = (ldotNet_invokeMethod)lua_touserdata(L, lua_upvalueindex(1));
+	if (call == NULL)
 		return 0;
-	return call (L);
+	return call(L);
 }
 
 LDOTNET_API void ldotNet_pushdotNetMethod(lua_State *L, ldotNet_invokeMethod call) {
-	lua_pushlightuserdata (L, (void *) call);
-	lua_pushcclosure (L, ldotNet_closure, 1);
+	lua_pushlightuserdata(L, (void *)call);
+	lua_pushcclosure(L, ldotNet_closure, 1);
 }
 
 LDOTNET_API void ldotNet_pushFunction(lua_State *L, lua_CFunction call) {
@@ -161,7 +161,7 @@ LDOTNET_API void ldotNet_registerGlobalMethod(lua_State *L, TString methodName, 
 LDOTNET_API int ldotNet_getRef(lua_State *L, int index) {
 	lua_pushvalue(L, index);
 	int ref = luaL_ref(L, LUA_REGISTRYINDEX);
-	return ref; 
+	return ref;
 }
 
 LDOTNET_API int ldotNet_getGlobalRef(lua_State *L, TString globalName, int luaType) {
@@ -169,7 +169,7 @@ LDOTNET_API int ldotNet_getGlobalRef(lua_State *L, TString globalName, int luaTy
 	luaL_checktype(L, -1, luaType);
 
 	int ref = ldotNet_getRef(L, -1);
-	return ref; 
+	return ref;
 }
 
 
@@ -217,33 +217,49 @@ LDOTNET_API void ldotNet_setMetatable(lua_State *L, int index) {
 	lua_setmetatable(L, index);
 }
 
-LDOTNET_STATIC void ldotNet_setDebugInfo(lua_State *L, lua_Debug *ar, ldotNet_Debug *d) {
-	d->eventCode=ar->event;
-	d->currentline=ar->currentline;
-	d->istailcall=ar->istailcall;
-	d->isvararg=ar->isvararg;
-	d->lastlinedefined=ar->lastlinedefined;
-	d->linedefined=ar->linedefined;
-	if(ar->name)
-		d->name=ar->name;
-	if(ar->namewhat)
-		d->namewhat=ar->namewhat;
-	d->nparams=ar->nparams;
-	d->nups=ar->nups;
+LDOTNET_STATIC const char* MultiToWideChar(const char *szBuffer) {
+	return szBuffer;
+	//if (szBuffer == NULL)
+	//	return NULL;
+	//int length = MultiByteToWideChar(CP_ACP, 0, szBuffer, -1, NULL, 0);
+	//if (length == 0)
+	//{
+	//	return NULL;
+	//}
+	//wchar_t *pwszBuffer = new wchar_t[length];
+	//length = MultiByteToWideChar(CP_ACP, 0, szBuffer, -1, pwszBuffer, length);
+	//if (length == 0)
+	//{
+	//	return NULL;
+	//}
+	//return pwszBuffer;
+}
 
-	d->short_src = ar->short_src;
+LDOTNET_STATIC void ldotNet_setDebugInfo(lua_State *L, lua_Debug *ar, ldotNet_Debug *d) {
+	d->eventCode = ar->event;
+	d->currentline = ar->currentline;
+	d->istailcall = ar->istailcall;
+	d->isvararg = ar->isvararg;
+	d->lastlinedefined = ar->lastlinedefined;
+	d->linedefined = ar->linedefined;
+	d->name = MultiToWideChar(ar->name);
+	d->namewhat = MultiToWideChar(ar->namewhat);
+	d->nparams = ar->nparams;
+	d->nups = ar->nups;
+
+	d->short_src = MultiToWideChar(ar->short_src);
 	//strcpy(d->short_src, ar->short_src);
 
-	d->what=ar->what;
-	d->source=ar->source;
+	d->what = MultiToWideChar(ar->what);
+	d->source = MultiToWideChar(ar->source);
 	d->L = L;
 	d->ar = ar;
 }
 
 LDOTNET_STATIC void ldotNet_hookHandler(lua_State *L, lua_Debug *ar) {
-	if(g_dotNetHook != NULL) {
+	if (g_dotNetHook != NULL) {
 		lua_getinfo(L, LDOTNET_DEBUG_WHAT, ar);
-		ldotNet_Debug *d = new ldotNet_Debug();
+		ldotNet_Debug *d = new ldotNet_Debug;
 
 		ldotNet_setDebugInfo(L, ar, d);
 
@@ -255,7 +271,7 @@ LDOTNET_STATIC void ldotNet_hookHandler(lua_State *L, lua_Debug *ar) {
 }
 
 LDOTNET_API int ldotNet_setHook(lua_State *L, int mask, int count) {
-	if(mask == 0) {
+	if (mask == 0) {
 		return lua_sethook(L, NULL, mask, count);
 	}
 	return lua_sethook(L, ldotNet_hookHandler, mask, count);
@@ -285,13 +301,13 @@ LDOTNET_API int *ldotNet_newUserData(lua_State *L, int value) {
 }
 LDOTNET_API int ldotNet_toUserData(lua_State *L, int index) {
 	int *p = (int *)lua_touserdata(L, index);
-	if(p == NULL)
+	if (p == NULL)
 		return -1;
 	return *p;
 }
 LDOTNET_API int ldotNet_checkUserData(lua_State *L, int index, TString name) {
 	int *p = (int *)luaL_checkudata(L, index, name);
-	if(p == NULL)
+	if (p == NULL)
 		return -1;
 	return *p;
 }
@@ -312,10 +328,10 @@ LDOTNET_API void ldotNet_rawsGet(lua_State *L, int index) {
 	lua_rawget(L, index);
 }
 
-LDOTNET_API int ldotNet_loadBuffer (lua_State *L, TString buff, size_t sz, TString name) {
+LDOTNET_API int ldotNet_loadBuffer(lua_State *L, TString buff, size_t sz, TString name) {
 	if (sz == 0)
-		sz = strlen (buff);
-	return luaL_loadbuffer (L, buff, sz, name);
+		sz = strlen(buff);
+	return luaL_loadbuffer(L, buff, sz, name);
 }
 
 LDOTNET_API int ldotNet_getTop(lua_State *L) {
@@ -405,7 +421,7 @@ LDOTNET_API int ldotNet_getStack(lua_State *L, int level, ldotNet_Debug *d) {
 
 
 LDOTNET_API void ldotNet_freeDebug(ldotNet_Debug *d) {
-	if(d != NULL && d->ar != NULL) {
+	if (d != NULL && d->ar != NULL) {
 		delete d->ar;
 		d->ar = NULL;
 	}

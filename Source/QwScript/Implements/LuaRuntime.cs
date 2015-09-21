@@ -31,7 +31,7 @@ namespace QwLua.Implements
         private readonly RuntimeDisposer _disposer;
         private readonly object _mark;
         private readonly static ScriptFunctionHandler ShowError = ThrowLuaError;
-        private readonly HookManager _hookManager;
+        //private readonly HookManager _hookManager;
 
         private const string ChunkName = "LuaRuntime";
         private readonly ScriptState _luaState;
@@ -92,7 +92,7 @@ namespace QwLua.Implements
             _disposer = new RuntimeDisposer(() =>
             {
                 Script = string.Empty;
-                that._hookManager.RemoveHook();
+                //that._hookManager.RemoveHook();
                 HookManagerPool.Remove(that.State);
                 LuaCore.Close(that.State);
                 LuaRuntimePool.Remove(that.State);
@@ -107,11 +107,11 @@ namespace QwLua.Implements
             LuaCore.Atpanic(State, ShowError);
             LuaRuntimePool.Add(_luaState, this);
 
-            _hookManager = new HookManager(that);
-            _hookManager.SetHook(EventMasks.All, 0);
+            //_hookManager = new HookManager(that);
+            //_hookManager.SetHook(EventMasks.All, 0);
 
             HookManagerPool.SetGlobalHookCallback();
-            HookManagerPool.Add(_luaState, _hookManager);
+            //HookManagerPool.Add(_luaState, _hookManager);
         }
 
         [AllowReversePInvokeCalls]
@@ -132,10 +132,10 @@ namespace QwLua.Implements
             get { return Disposer.Disposed; }
         }
 
-        public IHookManager HookMgr
-        {
-            get { return _hookManager; }
-        }
+        //public IHookManager HookMgr
+        //{
+        //    get { return _hookManager; }
+        //}
 
         public FunctionManager FuncMgr
         {

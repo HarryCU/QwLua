@@ -54,9 +54,9 @@ namespace QwLua.Implements
 
             var runtime = arg.Runtime;
 
-            runtime.HookMgr.Hook += Sleep;
+            //runtime.HookMgr.Hook += Sleep;
             var result = runtime.RunScript(arg.Script);
-            runtime.HookMgr.Hook -= Sleep;
+            //runtime.HookMgr.Hook -= Sleep;
             arg.SendResult(result);
         }
 

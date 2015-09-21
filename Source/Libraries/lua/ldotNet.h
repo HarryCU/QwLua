@@ -68,7 +68,7 @@ struct ldotNet_Debug {
 	unsigned char nparams;/* (u) number of parameters */
 	char isvararg;        /* (u) */
 	char istailcall;	/* (t) */
-	char short_src[LUA_IDSIZE]; /* (S) */
+	char *short_src; /* (S) */
 	lua_State *L;
 	lua_Debug *ar;
 };

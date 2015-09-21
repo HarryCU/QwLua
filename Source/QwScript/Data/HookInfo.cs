@@ -20,7 +20,7 @@ using QwLua.Implements;
 
 namespace QwLua.Data
 {
-    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public struct HookInfo
     {
         /// int
@@ -64,7 +64,6 @@ namespace QwLua.Data
         public byte istailcall;
 
         /// char[60]
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 60)]
         public string short_src;
 
         public ScriptState L;

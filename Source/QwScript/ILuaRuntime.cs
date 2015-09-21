@@ -28,7 +28,7 @@ namespace QwLua
         string Script { get; }
         ScriptState State { get; }
         bool Disposed { get; }
-        IHookManager HookMgr { get; }
+        //IHookManager HookMgr { get; }
 
         void LoadScript(string script);
         IList<object> RunScript(string script);

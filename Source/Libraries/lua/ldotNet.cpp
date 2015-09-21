@@ -231,7 +231,8 @@ LDOTNET_STATIC void ldotNet_setDebugInfo(lua_State *L, lua_Debug *ar, ldotNet_De
 	d->nparams=ar->nparams;
 	d->nups=ar->nups;
 
-	strcpy(d->short_src, ar->short_src);
+	d->short_src = ar->short_src;
+	//strcpy(d->short_src, ar->short_src);
 
 	d->what=ar->what;
 	d->source=ar->source;

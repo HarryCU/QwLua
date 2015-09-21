@@ -176,21 +176,6 @@ namespace QwLua.Implements
             return null;
         }
 
-        public IActuator RunScriptAsync(string script)
-        {
-            return RunScriptAsync(script, null);
-        }
-
-        public IActuator RunScriptAsync(string script, Action<IList<object>> callback)
-        {
-            Script = script;
-            Disposer.Add();
-            var actuator = new RuntimeActuator();
-            var arg = new RuntimeActuator.Argument(this, script, callback);
-            actuator.Start(arg);
-            return actuator;
-        }
-
         public ITable NewTable(string fullPath)
         {
             ScriptHelper.NewTable(State, fullPath);
@@ -270,24 +255,6 @@ namespace QwLua.Implements
         {
             if (Disposed) return;
             ClassMgr.AssemblyRegister(assembly);
-        }
-
-        public IScriptFunction GetFunc(string funcName)
-        {
-            if (Disposed) return null;
-            return FuncMgr.GetFunction(funcName);
-        }
-
-        public IList<object> Invoke(string funcName, params object[] args)
-        {
-            if (Disposed) return null;
-            return FuncMgr.Invoke(funcName, args);
-        }
-
-        public IScriptFunction FuncRegister(string fullPath, Func<IList<object>, object> func)
-        {
-            if (Disposed) return null;
-            return FuncMgr.Register(fullPath, func);
         }
 
         #endregion

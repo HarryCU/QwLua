@@ -22,7 +22,7 @@ namespace QwLua.Helpers
 {
     internal static class ScriptApi
     {
-        private const string LuaImportDllName = @"E:\ZOE\QwLua\out\Debug\lua.dll";
+        private const string LuaImportDllName = @"lua.dll";
 
         [DllImport(LuaImportDllName, EntryPoint = "ldotNet_setDotNetHook", CallingConvention = CallingConvention.Cdecl)]
         public static extern void SetDotNetHook(IntPtr ptr);

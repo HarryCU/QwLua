@@ -33,9 +33,6 @@ namespace QwLua
         void LoadScript(string script);
         IList<object> RunScript(string script);
 
-        IActuator RunScriptAsync(string script);
-        IActuator RunScriptAsync(string script, Action<IList<object>> callback);
-
         ITable NewTable(string fullPath);
         ITable GetTable(string fullPath);
         void ThrowError(Exception ex);
@@ -50,10 +47,5 @@ namespace QwLua
         void ObjectRegister(object o, string fullPath);
 
         void AssemblyRegister(Assembly assembly);
-
-        IScriptFunction GetFunc(string funcName);
-        IList<object> Invoke(string funcName, params object[] args);
-
-        IScriptFunction FuncRegister(string fullPath, Func<IList<object>, object> func);
     }
 }

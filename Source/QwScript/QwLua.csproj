@@ -117,12 +117,6 @@
     <Compile Include="Wrapper\MethodFinder.cs" />
     <Compile Include="Wrapper\MethodWrapper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\QwMicroKernel\QwMicroKernel.csproj">
-      <Project>{74a1a6c2-7d26-421e-b038-7262fefba609}</Project>
-      <Name>QwMicroKernel</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

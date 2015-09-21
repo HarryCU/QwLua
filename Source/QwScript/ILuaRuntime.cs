@@ -47,5 +47,10 @@ namespace QwLua
         void ObjectRegister(object o, string fullPath);
 
         void AssemblyRegister(Assembly assembly);
+
+        IScriptFunction GetFunc(string funcName);
+        IList<object> Execute(string funcName, params object[] args);
+
+        IScriptFunction FuncRegister(string fullPath, Func<IList<object>, object> func);
     }
 }

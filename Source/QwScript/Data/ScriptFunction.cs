@@ -28,7 +28,7 @@ namespace QwLua.Data
 
         internal ScriptFunction(ScriptState luaState, int reference)
         {
-            _reference = reference;
+            _reference = LuaCore.GetRef(luaState, reference);
             _luaState = luaState;
         }
 

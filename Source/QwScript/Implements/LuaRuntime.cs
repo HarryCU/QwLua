@@ -257,6 +257,24 @@ namespace QwLua.Implements
             ClassMgr.AssemblyRegister(assembly);
         }
 
+        public IScriptFunction GetFunc(string funcName)
+        {
+            if (Disposed) return null;
+            return FuncMgr.GetFunction(funcName);
+        }
+
+        public IList<object> Execute(string funcName, params object[] args)
+        {
+            if (Disposed) return null;
+            return FuncMgr.Invoke(funcName, args);
+        }
+
+        public IScriptFunction FuncRegister(string fullPath, Func<IList<object>, object> func)
+        {
+            if (Disposed) return null;
+            return FuncMgr.Register(fullPath, func);
+        }
+
         #endregion
 
         internal void ThrowExceptionFromError(ScriptState luaState, int oldTop)

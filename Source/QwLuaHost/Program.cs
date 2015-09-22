@@ -14,9 +14,17 @@ namespace QwLuaHost
 
         }
 
+        public int Length { get; set; }
+        public int Count { get; set; }
+
         public void CreateNamed()
         {
 
+        }
+
+        public object Next()
+        {
+            return null;
         }
     }
     class Program
@@ -31,6 +39,13 @@ namespace QwLuaHost
 func Main(fileName)
     var service = NpoiService(fileName)
     service:CreateNamed()
+    var i = service.Length
+    var c = service.Count
+    while( i <= c )
+    do
+        var row = service:Next()
+
+    end
 end
 ");
 

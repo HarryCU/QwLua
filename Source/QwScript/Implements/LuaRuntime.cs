@@ -151,7 +151,11 @@ namespace QwLua.Implements
 
         public void LoadScript(string script)
         {
-            LuaCore.RunScript(State, script);
+            var luaState = State;
+            int oldTop = LuaCore.GetTop(luaState);
+            if (LuaCore.RunScript(State, script) == 0)
+                return;
+            ThrowExceptionFromError(luaState, oldTop);
         }
 
         public IList<object> RunScript(string script)

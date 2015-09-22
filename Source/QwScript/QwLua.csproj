@@ -69,6 +69,7 @@
     <Compile Include="Handler\HandlerCenter.cs" />
     <Compile Include="Handler\IHandler.cs" />
     <Compile Include="Handler\INewIndexer.cs" />
+    <Compile Include="Handler\ItemHandler.cs" />
     <Compile Include="Handler\MethodHandler.cs" />
     <Compile Include="Handler\ObjectHandler.cs" />
     <Compile Include="Handler\PropertyHandler.cs" />

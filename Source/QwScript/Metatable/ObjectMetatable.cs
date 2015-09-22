@@ -76,6 +76,8 @@ namespace QwLua.Metatable
                     var handler = GetArrayHandler(luaState, -1, data, true);
                     if (handler == null)
                         handler = GetMember(luaState, data, memberName);
+                    if (handler == null)
+                        handler = GetItemHandler(luaState, data, true);
                     if (handler != null)
                     {
                         return handler.Reg2Env();
@@ -100,6 +102,8 @@ namespace QwLua.Metatable
                         if (k != null)
                             handler = GetMember(luaState, data, k) as INewIndexer;
                     }
+                    if (handler == null)
+                        handler = GetItemHandler(luaState, data, false) as INewIndexer;
                     if (handler != null)
                     {
                         handler.SetValue(value);

@@ -15,6 +15,7 @@
  */
 
 using System;
+using System.Collections;
 using System.Reflection;
 using QwLua.Data;
 using QwLua.Handler;
@@ -123,5 +124,29 @@ namespace QwLua.Metatable
             }
             return handler;
         }
+
+        protected static BaseHandler GetItemHandler(ScriptState luaState, object data, bool getter)
+        {
+            if (data == null)
+                return null;
+            var methodName = getter ? "get_Item" : "set_Item";
+
+            var type = data.GetType();
+            var hasItem = ReflectionHelper.HasMethod(type, methodName, ReflectionHelper.DefBindingFlags | BindingFlags.Static);
+            if (!hasItem)
+                return null;
+            var runtime = LuaRuntimePool.GetRuntime(luaState);
+            var key = ScriptHelper.GenerateKey(type, methodName);
+            var handler = runtime.ClassMgr.Cache[key] as BaseHandler;
+            if (handler == null)
+            {
+                var method = ReflectionHelper.GetMethod(type.GetMethod(methodName));
+                handler = new ItemHandler(luaState);
+                handler.Initilaze(new[] { data, method, getter });
+                runtime.ClassMgr.Cache.Add(key, handler);
+            }
+            return handler;
+        }
+
     }
 }

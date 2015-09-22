@@ -66,7 +66,7 @@ namespace QwLua.Handler
         {
             var instance = GetInstance();
             object v = Convert.ChangeType(value, Property.Type);
-            Property.SetValue(instance, value);
+            Property.SetValue(instance, v);
         }
     }
 }

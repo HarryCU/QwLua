@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System;
 using QwLua.Data;
 using QwLua.Helpers;
 using QwLua.Reflection;
@@ -64,6 +65,7 @@ namespace QwLua.Handler
         public void SetValue(object value)
         {
             var instance = GetInstance();
+            object v = Convert.ChangeType(value, Property.Type);
             Property.SetValue(instance, value);
         }
     }

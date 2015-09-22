@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+using System;
 using QwLua.Data;
 using QwLua.Helpers;
 using QwLua.Reflection;
@@ -64,7 +65,9 @@ namespace QwLua.Handler
         public void SetValue(object value)
         {
             var instance = GetInstance();
-            Field.SetValue(instance, value);
+            // ReSharper disable once AssignNullToNotNullAttribute
+            object v = Convert.ChangeType(value, Field.Member.DeclaringType);
+            Field.SetValue(instance, v);
         }
     }
 }

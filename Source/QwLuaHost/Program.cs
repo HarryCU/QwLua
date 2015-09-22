@@ -7,67 +7,35 @@ using QwLua;
 
 namespace QwLuaHost
 {
+    class NpoiService
+    {
+        public NpoiService(string fileName)
+        {
+
+        }
+
+        public void CreateNamed()
+        {
+
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
             using (var runtime = LuaFactory.CreateRuntime())
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    runtime.LoadScript(@"func main()
-end
-func main2()
-end
-func main1()
-end
+                runtime.TypeRegister(typeof(NpoiService));
 
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
-main1()
+                runtime.LoadScript(@"
+func Main(fileName)
+    var service = NpoiService(fileName)
+    service:CreateNamed()
+end
 ");
-                }
+
+                runtime.Execute("Main", "dd");
+
             }
         }
     }

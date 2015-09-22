@@ -44,7 +44,7 @@ extern "C" {
 #endif
 
 #if defined(WIN32) || defined(WP8)
-#define LUA_STDCALL __stdcall
+#define LUA_STDCALL
 #else
 #define LUA_STDCALL
 #endif

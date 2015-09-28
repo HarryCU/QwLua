@@ -61,24 +61,25 @@ namespace QwLua.Wrapper
             var builder = new StringBuilder(256);
             builder.Append(type).Append(".").Append(memberName).Append("(");
             var count = @params.Count;
-            foreach (var p in @params)
-            {
-                string typeName = null;
-                var instance = p as ParameterInfo;
-                if (instance != null)
-                {
-                    typeName = instance.ParameterType.FullName;
-                }
-                else
-                {
-                    var t = p as Type;
-                    typeName = t != null ? t.FullName : p.GetType().FullName;
-                }
-                builder.Append(typeName);
-                if (count != 1)
-                    builder.Append(',');
-                count--;
-            }
+            builder.Append(count);
+            //foreach (var p in @params)
+            //{
+            //    string typeName = null;
+            //    var instance = p as ParameterInfo;
+            //    if (instance != null)
+            //    {
+            //        typeName = instance.ParameterType.FullName;
+            //    }
+            //    else
+            //    {
+            //        var t = p as Type;
+            //        typeName = t != null ? t.FullName : p.GetType().FullName;
+            //    }
+            //    builder.Append(typeName);
+            //    if (count != 1)
+            //        builder.Append(',');
+            //    count--;
+            //}
             builder.Append(")");
             var key = builder.ToString();
             builder.Clear();

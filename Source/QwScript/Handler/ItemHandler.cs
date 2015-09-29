@@ -32,19 +32,13 @@ namespace QwLua.Handler
         {
         }
 
-        private object Instance
-        {
-            get { return _instance; }
-        }
-
         public override void Initilaze(object data)
         {
             var objs = data as object[];
             if (objs != null)
             {
-                _instance = objs[0];
-                _method = objs[1] as IMethod;
-                _getter = (bool)objs[2];
+                _method = objs[0] as IMethod;
+                _getter = (bool)objs[1];
             }
         }
 

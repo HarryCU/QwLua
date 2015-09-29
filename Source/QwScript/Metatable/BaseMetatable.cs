@@ -73,11 +73,11 @@ namespace QwLua.Metatable
                     {
                         case MemberTypes.Field:
                             handler = new FieldHandler(luaState);
-                            handler.Initilaze(new[] { ReflectionHelper.GetField((FieldInfo)member), o });
+                            handler.Initilaze(new[] { ReflectionHelper.GetField((FieldInfo)member) });
                             break;
                         case MemberTypes.Property:
                             handler = new PropertyHandler(luaState);
-                            handler.Initilaze(new[] { ReflectionHelper.GetProperty((PropertyInfo)member), o });
+                            handler.Initilaze(new[] { ReflectionHelper.GetProperty((PropertyInfo)member) });
                             break;
                         case MemberTypes.Method:
                             handler = new MethodHandler(luaState);
@@ -92,6 +92,8 @@ namespace QwLua.Metatable
 
                 #endregion
             }
+            if (handler != null)
+                handler.ChangeInstance(o);
             return handler;
         }
 
@@ -118,10 +120,12 @@ namespace QwLua.Metatable
                 {
                     var method = ReflectionHelper.GetMethod(type.GetMethod(methodName));
                     handler = new ArrayHandler(luaState);
-                    handler.Initilaze(new[] { data, method, getter });
+                    handler.Initilaze(new object[] { method, getter });
                     runtime.ClassMgr.Cache.Add(key, handler);
                 }
             }
+            if (handler != null)
+                handler.ChangeInstance(data);
             return handler;
         }
 
@@ -142,9 +146,10 @@ namespace QwLua.Metatable
             {
                 var method = ReflectionHelper.GetMethod(type.GetMethod(methodName));
                 handler = new ItemHandler(luaState);
-                handler.Initilaze(new[] { data, method, getter });
+                handler.Initilaze(new object[] { method, getter });
                 runtime.ClassMgr.Cache.Add(key, handler);
             }
+            handler.ChangeInstance(data);
             return handler;
         }
 

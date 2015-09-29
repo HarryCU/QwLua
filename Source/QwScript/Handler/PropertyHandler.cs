@@ -24,7 +24,6 @@ namespace QwLua.Handler
     internal sealed class PropertyHandler : BaseHandler, INewIndexer
     {
         private IProperty _property;
-        private object _instance;
 
         public PropertyHandler(ScriptState luaState)
             : base(luaState)
@@ -42,16 +41,14 @@ namespace QwLua.Handler
             if (objs != null)
             {
                 _property = objs[0] as IProperty;
-                _instance = objs[1];
             }
         }
 
         private object GetInstance()
         {
-            object instance = null;
             if (!Property.IsStatic)
-                instance = _instance;
-            return instance;
+                return Instance;
+            return null;
         }
 
         public override int Reg2Env()

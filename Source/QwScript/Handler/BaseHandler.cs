@@ -32,6 +32,17 @@ namespace QwLua.Handler
             get { return _luaState; }
         }
 
+        protected object Instance
+        {
+            get;
+            private set;
+        }
+
+        public void ChangeInstance(object instance)
+        {
+            Instance = instance;
+        }
+
         public abstract void Initilaze(object data);
 
         public abstract int Reg2Env();

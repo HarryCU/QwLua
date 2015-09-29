@@ -24,7 +24,6 @@ namespace QwLua.Handler
     internal sealed class FieldHandler : BaseHandler, INewIndexer
     {
         private IField _field;
-        private object _instance;
 
         public FieldHandler(ScriptState luaState)
             : base(luaState)
@@ -42,16 +41,14 @@ namespace QwLua.Handler
             if (objs != null)
             {
                 _field = objs[0] as IField;
-                _instance = objs[1];
             }
         }
 
         private object GetInstance()
         {
-            object instance = null;
             if (!Field.IsStatic)
-                instance = _instance;
-            return instance;
+                return Instance;
+            return null;
         }
 
         public override int Reg2Env()
